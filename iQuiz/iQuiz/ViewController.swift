@@ -30,10 +30,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        title = "Quiz Topic Page"
+        
         quizTopicTableView.delegate = self
         quizTopicTableView.dataSource = self
         
         // TO-DO: Customize cell content so that it has icon (image) on left, Title, and short description sentence
+        configureItems()
     }
     
     
@@ -69,6 +72,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.detailTextLabel?.text = topicDescriptions[indexPath.row]
         
         return cell
+    }
+    
+    private func configureItems() {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "gear"),
+                style: .plain,
+                target: self,
+                action: #selector(sendSettingsAlert)
+            )
+    }
+    
+    @objc private func sendSettingsAlert() {
+        let alert = UIAlertController(title: nil, message: "Settings go here", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Close the alert"), style: .default, handler: {_ in
+            NSLog("User said close")
+            alert.dismiss(animated: true)
+        }))
+        
+        self.present(alert, animated: true)
     }
     
 }
