@@ -17,12 +17,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         "Science"
     ]
     
-    let topicImages:[String] = []
+    let topicImages:[UIImage?] = [
+        UIImage(systemName: "pencil"),
+        UIImage(systemName: "burst"),
+        UIImage(systemName: "sparkles")
+    ]
     
     let topicDescriptions:[String] = [
         "This is Mathematics quiz to test you math skills",
-        "This is a quiz that test your knowledge on the Marvel Universe",
-        "This is a quiz that test your knowledge to all of Science"
+        "Test your knowledge on the Marvel Universe",
+        "Test your science mind"
     ]
     
     
@@ -70,10 +74,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.textLabel?.text = topicStrings[indexPath.row]
         cell.detailTextLabel?.text = topicDescriptions[indexPath.row]
+        cell.imageView?.image = topicImages[indexPath.row]
+
         
         return cell
     }
     
+    // Adding a navigation item (settings button)
     private func configureItems() {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),
@@ -83,6 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             )
     }
     
+    // Function to send alert when button is pressed (Used Professor demo repo for code)
     @objc private func sendSettingsAlert() {
         let alert = UIAlertController(title: nil, message: "Settings go here", preferredStyle: .alert)
         
