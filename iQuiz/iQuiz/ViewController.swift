@@ -11,22 +11,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var quizTopicTableView: UITableView!
     
-    let topicStrings = [
-        "Mathematics",
-        "Marvel Super Heroes",
-        "Science"
-    ]
-    
-    let topicImages:[UIImage?] = [
-        UIImage(systemName: "pencil"),
-        UIImage(systemName: "burst"),
-        UIImage(systemName: "sparkles")
-    ]
-    
-    let topicDescriptions:[String] = [
-        "This is Mathematics quiz to test you math skills",
-        "Test your knowledge on the Marvel Universe",
-        "Test your science mind"
+
+    // Will pass whichever one we need to the question view controller (depends on which button is selected)
+    let quizzes:[Quiz] = [
+        Quiz(topic: "Mathematics",
+             description: "Test your math skills now",
+             questions: [],
+             image: UIImage(systemName: "pencil")),
+        Quiz(topic: "Marvel Super Heroes",
+             description: "Test your knowledge on the Marvel Universe",
+             questions: [],
+             image: UIImage(systemName: "burst")),
+        Quiz(topic: "Science",
+             description: "Test your science mind",
+             questions: [],
+             image: UIImage(systemName: "sparkles"))
     ]
     
     
@@ -51,9 +50,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     // Function for what happens the the cell was selected
+    // Where we will add the segue to the QuestionViewController (with source data)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Guessing when this is called the UITableView along with index gives the
         // row selected
+        // can pass the index of questions selected quizzes[indexPath] into source code
         if let cell = tableView.cellForRow(at: indexPath) {
             print(cell.textLabel?.text ?? "No text")
         }
@@ -64,17 +65,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Number of rows that we want to show in the table (same as the table cell)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topicStrings.count
+        return quizzes.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Trying to see if there is a previous available cell and using it for the new cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell", for: indexPath)
+        let quiz = quizzes[indexPath.row]
         
-        cell.textLabel?.text = topicStrings[indexPath.row]
-        cell.detailTextLabel?.text = topicDescriptions[indexPath.row]
-        cell.imageView?.image = topicImages[indexPath.row]
+        cell.textLabel?.text = quiz.topic
+        cell.detailTextLabel?.text = quiz.description
+        cell.imageView?.image = quiz.image
 
         
         return cell
