@@ -3,6 +3,7 @@
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,7 +83,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="topicCell" textLabel="mfu-4a-GtS" detailTextLabel="R4v-68-N50" imageView="Nnf-Pl-6cG" style="IBUITableViewCellStyleSubtitle" id="jxF-lg-XDN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="questionCell" textLabel="mfu-4a-GtS" imageView="Nnf-Pl-6cG" style="IBUITableViewCellStyleDefault" id="jxF-lg-XDN">
                                         <rect key="frame" x="0.0" y="50" width="402" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jxF-lg-XDN" id="hZQ-gF-zvN">
@@ -90,22 +91,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mfu-4a-GtS">
-                                                    <rect key="frame" x="59" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                                    <rect key="frame" x="59" y="0.0" width="323" height="43.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R4v-68-N50">
-                                                    <rect key="frame" x="59.000000000000014" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nnf-Pl-6cG">
+                                                    <rect key="frame" x="24.166666666666668" y="13.666666666666668" width="15.666666666666666" height="15.666666666666666"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="pencil" catalog="system" id="Nnf-Pl-6cG">
-                                                    <rect key="frame" x="23.333333333333336" y="14" width="17.333333333333332" height="15.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <imageReference key="image" image="checkmark.circle" catalog="system" symbolScale="small"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -116,6 +111,9 @@
                         <viewLayoutGuide key="safeArea" id="jKb-66-cdR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="questionsTableView" destination="Pcn-jZ-q96" id="50d-9k-oMc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaA-go-MFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +139,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
