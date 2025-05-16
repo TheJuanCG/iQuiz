@@ -270,6 +270,48 @@
             </objects>
             <point key="canvasLocation" x="946.26865671641781" y="3.432494279176201"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Mbn-vL-yvF">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="DDT-mg-SZ3" customClass="SettingsViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fhg-EP-IkK">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete the current URL and enter a new data source here!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pse-i3-pqc">
+                                <rect key="frame" x="10" y="164" width="402" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input URL here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0M-rf-gLM">
+                                <rect key="frame" x="152" y="420" width="97" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7F-83-SZh">
+                                <rect key="frame" x="145" y="721" width="112" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Check Now"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3V0-Zx-CrH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pse-i3-pqc" firstAttribute="top" secondItem="3V0-Zx-CrH" secondAttribute="top" constant="40" id="AmK-hG-Oee"/>
+                            <constraint firstItem="q0M-rf-gLM" firstAttribute="top" secondItem="pse-i3-pqc" secondAttribute="bottom" constant="40" id="NOn-i3-rdm"/>
+                            <constraint firstItem="pse-i3-pqc" firstAttribute="leading" secondItem="3V0-Zx-CrH" secondAttribute="leading" constant="10" id="cX8-fR-js1"/>
+                            <constraint firstItem="q0M-rf-gLM" firstAttribute="centerX" secondItem="3V0-Zx-CrH" secondAttribute="centerX" id="lpl-4N-OWl"/>
+                            <constraint firstItem="S7F-83-SZh" firstAttribute="centerX" secondItem="3V0-Zx-CrH" secondAttribute="centerX" id="rNr-RR-Xg2"/>
+                            <constraint firstItem="S7F-83-SZh" firstAttribute="bottom" secondItem="3V0-Zx-CrH" secondAttribute="bottom" constant="-50" id="sgG-UR-TB8"/>
+                            <constraint firstItem="pse-i3-pqc" firstAttribute="trailing" secondItem="3V0-Zx-CrH" secondAttribute="trailing" constant="10" id="tRn-ok-vLT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="siH-DS-N5G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1540" y="-671"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="TXg-ed-6A7"/>
