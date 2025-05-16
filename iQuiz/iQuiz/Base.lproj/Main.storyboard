@@ -293,6 +293,9 @@
                                 <rect key="frame" x="145" y="721" width="112" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Check Now"/>
+                                <connections>
+                                    <action selector="checkNowPressed:" destination="DDT-mg-SZ3" eventType="touchUpInside" id="YbX-e1-olm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3V0-Zx-CrH"/>
@@ -307,6 +310,9 @@
                             <constraint firstItem="pse-i3-pqc" firstAttribute="trailing" secondItem="3V0-Zx-CrH" secondAttribute="trailing" constant="10" id="tRn-ok-vLT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inputURLField" destination="q0M-rf-gLM" id="oUH-xT-FoT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siH-DS-N5G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

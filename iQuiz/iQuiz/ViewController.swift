@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.textLabel?.text = quiz.topic
         cell.detailTextLabel?.text = quiz.description
-        cell.imageView?.image = quiz.image
+        //cell.imageView?.image = quiz.image
 
         
         return cell
@@ -87,21 +87,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Function to send alert when button is pressed (Used Professor demo repo for code)
     @objc private func sendSettingsAlert() {
-//        let alert = UIAlertController(title: nil, message: "Settings go here", preferredStyle: .alert)
-//        
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Close the alert"), style: .default, handler: {_ in
-//            NSLog("User said close")
-//            alert.dismiss(animated: true)
-//        }))
+        let alert = UIAlertController(title: nil, message: "Error", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Invalid URL"), style: .default, handler: {_ in
+            NSLog("User said close")
+            alert.dismiss(animated: true)
+        }))
         
 //        self.present(alert, animated: true)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
         
-//        settingsVC.onCheck = { url in
-//            print("user entered URL: \(url)")
-//        }
+        settingsVC.onCheck = { url in
+            print("user entered URL: \(url)")
+            // TO-DO: Create function to download url data and extract
+            // could have it return true or false
+            // if return false return the error
+            
+//            if fetchURLQuizData(stringUrl: url) == false {
+//                self.present(alert, animated: true)
+//            }
+            
+            fetchURLQuizData(stringUrl: url) { success in
+                if success {
+                    self.quizTopicTableView.reloadData()
+                } else {
+                    self.present(alert, animated: true)
+                }
+            }
+//            self.quizTopicTableView.reloadData()
+        }
         
         settingsVC.modalPresentationStyle = .formSheet
         present(settingsVC, animated: true)

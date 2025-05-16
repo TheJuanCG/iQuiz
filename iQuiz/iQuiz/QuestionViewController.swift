@@ -87,7 +87,7 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
             destination.currentQuestion = currentQuestion
             
             
-            if selectedAnswer == currentQuestion?.correctAnswerIndex {
+            if selectedAnswer == Int(currentQuestion!.correctAnswerIndex) {
                 destination.correctAnswer = true
                 destination.numberCorrectAnswers = numberCorrectAnswers! + 1
             } else {

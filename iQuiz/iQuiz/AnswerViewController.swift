@@ -28,7 +28,8 @@ class AnswerViewController: UIViewController {
         super.viewDidLoad()
         
         questionLabel.text = "Question: \(currentQuestion!.text)"
-        correctAnswerLabel.text = "The correct answer is: \(currentQuestion!.answers[currentQuestion!.correctAnswerIndex])"
+        let correctAnswerIndexInt = Int(currentQuestion!.correctAnswerIndex)
+        correctAnswerLabel.text = "The correct answer is: \(currentQuestion!.answers[correctAnswerIndexInt!])"
         
         // TO-DO: Show if Answer was correct or not
         // Maybe green text if correct and red if wrong
