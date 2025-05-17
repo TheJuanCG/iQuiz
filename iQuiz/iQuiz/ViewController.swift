@@ -8,8 +8,6 @@
 import UIKit
 
 
-
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var quizTopicTableView: UITableView!
@@ -108,6 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            if fetchURLQuizData(stringUrl: url) == false {
 //                self.present(alert, animated: true)
 //            }
+            UserDefaults.standard.set(url, forKey: "quizDataURL")
             
             fetchURLQuizData(stringUrl: url) { success in
                 if success {

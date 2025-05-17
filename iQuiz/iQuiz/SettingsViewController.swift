@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        inputURLField.text = "https://tednewardsandbox.site44.com/questions.json"
+        inputURLField.text = urlString
     }
     
     

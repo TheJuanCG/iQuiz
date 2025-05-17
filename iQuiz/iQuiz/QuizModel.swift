@@ -32,6 +32,8 @@ struct Question: Codable {
     }
 }
 
+var  urlString = UserDefaults.standard.string(forKey: "quizDataURL") ?? "https://tednewardsandbox.site44.com/questions.json"
+
 var quizzes: [Quiz] = [
     Quiz(topic: "Mathematics",
          description: "Test your math skills now",
