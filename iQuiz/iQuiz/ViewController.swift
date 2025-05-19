@@ -25,6 +25,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // TO-DO: Customize cell content so that it has icon (image) on left, Title, and short description sentence
         configureItems()
+        
+        // Try getting local storage
+//        if let data = loadFromFile() {
+//            do {
+//                let decoder = JSONDecoder()
+//                quizzes = try decoder.decode([Quiz].self, from: data)
+//            } catch {
+//                print("Decoding failed")
+//            }
+//        }
+        
+        // Try fetching from given URL or if offline, then try getting from local storage
+        fetchURLQuizData(stringUrl: urlString) { success in
+            if success {
+                self.quizTopicTableView.reloadData()
+            } else {
+                if let data = loadFromFile() {
+                    do {
+                        let decoder = JSONDecoder()
+                        quizzes = try decoder.decode([Quiz].self, from: data)
+                    } catch {
+                        print("Decoding failed")
+                    }
+                }
+            }
+        }
+        
     }
     
     
@@ -79,7 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 image: UIImage(systemName: "gear"),
                 style: .plain,
                 target: self,
-                action: #selector(sendSettingsAlert)
+                action: #selector(openSettingsTapped)
             )
     }
     
@@ -120,6 +147,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         settingsVC.modalPresentationStyle = .formSheet
         present(settingsVC, animated: true)
+    }
+    
+    @objc func openSettingsTapped() {
+        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(settingsURL) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

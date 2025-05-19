@@ -32,8 +32,9 @@ struct Question: Codable {
     }
 }
 
-var  urlString = UserDefaults.standard.string(forKey: "quizDataURL") ?? "https://tednewardsandbox.site44.com/questions.json"
+var  urlString = UserDefaults.standard.string(forKey: "quizDataURL") ?? "defaultURL"
 
+// TO-DO: Need to try to load saved data from app directory
 var quizzes: [Quiz] = [
     Quiz(topic: "Mathematics",
          description: "Test your math skills now",
@@ -79,6 +80,8 @@ var quizzes: [Quiz] = [
 ]
 
 
+
+
 func fetchURLQuizData(stringUrl: String, completion: @escaping (Bool) -> Void) {
     guard let url = URL(string: stringUrl) else {
         print("Bad URL")
@@ -103,6 +106,8 @@ func fetchURLQuizData(stringUrl: String, completion: @escaping (Bool) -> Void) {
             do {
                 let decoder = JSONDecoder()
                 quizzes = try decoder.decode([Quiz].self, from: data)
+                // Saving data to file
+                saveToFile(data: data)
                 completion(true)
             } catch {
                 print("Decoding failed: \(error)")
@@ -112,3 +117,17 @@ func fetchURLQuizData(stringUrl: String, completion: @escaping (Bool) -> Void) {
     }.resume()
 }
 
+func saveToFile(data: Data) {
+    let fileManager = FileManager.default
+    let dir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    print("This is the directory where data is being saved: \(dir)")
+    let fileURL = dir.appendingPathComponent("data.json")
+    try? data.write(to: fileURL)
+}
+
+func loadFromFile() -> Data? {
+    let fileManager = FileManager.default
+    let dir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let fileURL = dir.appendingPathComponent("data.json")
+    return try? Data(contentsOf: fileURL)
+}
